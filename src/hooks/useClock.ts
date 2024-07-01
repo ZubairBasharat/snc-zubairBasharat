@@ -23,7 +23,7 @@ const useClock = () => {
     return () => clearInterval(interval);
   }, []);
 
-  return time;
+  return time.toString();
 };
 
 export default useClock;

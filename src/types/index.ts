@@ -1,6 +1,7 @@
 export interface TabButton {
   id: number;
   label: string;
+  email: string;
 }
 
 export interface ButtonProps {
@@ -13,7 +14,7 @@ export interface ButtonProps {
 
 export interface ButtonsListProps {
   buttonsList: TabButton[];
-  getClickedItem: (id: number) => void;
+  getClickedItem: (rec: TabButton) => void;
   selected: string | number;
   loading: boolean;
 }

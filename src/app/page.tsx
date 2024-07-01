@@ -1,20 +1,27 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Tabs from '@/components/ui/Tabs';
 import SkeletonLoader from '@/components/ui/SkeletonLoader';
 import { tabsButtonsList } from '@/constant/variables';
 import ProfileCard from '@/components/ui/ProfileCard';
 import useUser from '@/services/hooks';
+import { TabButton } from '@/types';
+import { useLogContext } from '@/providers/LogProvider';
+import useClock from '@/hooks/useClock';
 
 const Home: React.FC = () => {
-  const [active, setActive] = useState<string | number>('');
-
-  const { data, error, isFetching, refetch } = useUser(active);
-
-  const getClickedItem = async (id: number) => {
-    setActive(id);
-    await refetch();
+  const [active, setActive] = useState<string>('');
+  const { enableLogs } = useLogContext();
+  const { data, error, isFetching } = useUser(active);
+  const time = useClock();
+  const getClickedItem = (rec: TabButton) => {
+    setActive(rec.email);
   };
+  useEffect(() => {
+    if (enableLogs && data) {
+      console.log(`data: ${JSON.stringify(data)}, time: ${time}`);
+    }
+  }, [data]);
   return (
     <div className="mx-auto px-4 z-10 w-full max-w-3xl text-sm">
       <Tabs
