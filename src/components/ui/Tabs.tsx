@@ -13,13 +13,13 @@ const Tabs: React.FC<ButtonsListProps> = ({
         {buttonsList.map((list, key) => (
           <div key={`list__${key + 1}`} className="basis-1/4 me-3">
             <Button
-              disabled={selected == key + 1 || loading === true}
+              disabled={selected == list.email || loading === true}
               className={
-                selected == key + 1
+                selected == list.email
                   ? 'bg-blue-500 text-white'
                   : 'bg-white text-gray-900 '
               }
-              onClick={() => getClickedItem(list.id)}
+              onClick={() => getClickedItem(list)}
               label={list.label}
             />
           </div>

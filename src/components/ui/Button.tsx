@@ -14,7 +14,7 @@ const Button: React.FC<ButtonProps> = ({
         type={type}
         disabled={disabled}
         className={`py-2.5 px-5 me-2 w-full text-sm font-medium focus:outline-none rounded-lg border
-                  ${className}
+                    ${className}
                 `}
         onClick={onClick}
       >
