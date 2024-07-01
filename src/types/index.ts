@@ -17,3 +17,10 @@ export interface ButtonsListProps {
   selected: string | number;
   loading: boolean;
 }
+
+export interface User {
+  id: number;
+  name: string;
+  email: string;
+  profileImage: string;
+}

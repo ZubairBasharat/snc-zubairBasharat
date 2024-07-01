@@ -1,19 +1,22 @@
+import { User } from '@/types';
 import React from 'react';
-
-const ProfileCard = () => {
+interface ProfileCardProps {
+  user: User | null | undefined;
+}
+const ProfileCard: React.FC<ProfileCardProps> = ({ user }) => {
   return (
     <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700">
       <div className="flex flex-col items-center py-10">
         <img
           className="w-24 h-24 mb-3 rounded-full shadow-lg"
-          src="/images/profile-picture.jpg"
+          src={user?.profileImage}
           alt="Bonnie image"
         />
         <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">
-          Bonnie Green
+          {user?.name}
         </h5>
         <span className="text-sm text-gray-500 dark:text-gray-400">
-          Visual Designer
+          {user?.email}
         </span>
         <div className="flex mt-4 md:mt-6">
           <a
